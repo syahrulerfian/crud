@@ -10,31 +10,28 @@
                         </div>
                     @endif
             <div class="card">
-                <div class="card-header">Daftar Siswa
-                    <a href="{{ route('siswa.create') }}" class="btn btn-primary" style="float:right">
-                        Tambah Siswa
+                <div class="card-header">Daftar Hobi
+                    <a href="{{ route('hobi.create') }}" class="btn btn-primary" style="float:right">
+                        Tambah Hobi
                     </a>
                 </div>
                 <div class="card-body">
                     <table class="table">
                         <thead>
-                            <th>Nama Siswa</th>
-                            <th>Kelas</th>
-                            <th>Hobi</th>
-                            <th>Aksi</th>
+                            <th>Jenis Hobi</th>
+                            <th>Action</th>
+                            
                         </thead>
                         <tbody>
                             @foreach ($data as $item)
                             <tr>
-                                <td> {{ $item->nama }} </td>
-                                <td> {{ $item->kelas }} </td>
                                 <td> {{ $item->hobi }} </td>
                                 <td>
-                                    <form action="{{route('siswa.destroy', $item->id)}}" method="post">
+                                    <form action="{{route('hobi.destroy', $item->id)}}" method="post">
                                         @csrf
                                         @method('Delete')
-                                        <a class="btn btn-info" href=" {{ route('siswa.show', $item->id) }} ">Show</a>
-                                        <a class="btn btn-warning" href=" {{ route('siswa.edit', $item->id) }} ">Edit</a>
+                                        <a class="btn btn-info" href=" {{ route('hobi.show', $item->id) }} ">Show</a>
+                                        <a class="btn btn-warning" href=" {{ route('hobi.edit', $item->id) }} ">Edit</a>
                                         <button type="submit" class="btn btn-danger" >Delete</button>
                                     </form>
                                 </td>

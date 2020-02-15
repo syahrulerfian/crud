@@ -18,5 +18,10 @@ class Hobi extends Model
             'id_mahaiswa'
            );
     }
+
+    public function siswa()
+    {
+        return $this->belongsToMany(Siswa::class);
+    }
     
 }

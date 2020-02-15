@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTabungansTable extends Migration
+class CreateHobiSiswaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateTabungansTable extends Migration
      */
     public function up()
     {
-        Schema::create('tabungans', function (Blueprint $table) {
+        Schema::create('hobi_siswa', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('siswa_id')->unsigned();
-            $table->foreign('siswa_id')->references('id')->on('siswas')
-                    ->onDelete('cascade');
-            $table->integer('jumlah_uang')->default(0);
+            $table->bigInteger('hobi_id')->unsigned();
+
+            $table->foreign('siswa_id')->references('id')->on('siswas');
+            $table->foreign('hobi_id')->references('id')->on('hobis');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateTabungansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tabungans');
+        Schema::dropIfExists('hobi_siswa');
     }
 }
